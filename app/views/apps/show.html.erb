@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<style>
+
+  .picto_title {
+    overflow: hidden;
+    margin-bottom: 1em;
+  }
+
+  .app_icon {
+    float: left;
+    padding-right: 1em;
+    }
+
+  h1 {
+    margin-left: 20px;
+    margin-bottom: 0px; 
+    margin-top: 0px;
+  }
+  .appstore {float: right;} 
+
+</style>
+
+<p>
+  <strong>Kategorie:</strong>
+  <%= @app.kategorie %>
+</p>
+
+<div class="picto_title">
+    <div class='app_icon'> <%= image_tag(@app.picture_url, width: 70, style: "border-radius: 15px") if @app.picture.present? %> </div>
+    <a href="<%= @app.link %>" target="_blank" class="appstore"> <%= image_tag("appstore_icon.jpg", width: 150)%> </a>
+    <h1> <%= @app.name %> </h1>    
+</div>
+
+<div>
+  <%= @app.description %>
+</div>
+
+
+<%= link_to 'Edit', edit_app_path(@app) %> |
+<%= link_to 'Back', apps_path %>

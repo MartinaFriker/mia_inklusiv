@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class=container>
+  <div class=row>
+    <div class="col-7 introduction">
+      <h1>Appsammlung</h1>
+      <p>Die Appsammlung beinhaltet Apps die entweder speziell für den Sonderschulbereich entwickelt worden sind oder die sich im Einsatz gut bewährt haben. Ausserdem auch Apps die sich an besondere Bedürfnisse anpassen lassen (diverse Einstellungsmöglichkeiten) oder bei denen man den Lerninhalt selber kreiert.</p>
+    </div>
+
+    <div class="col">
+      <h3> Links zu weiteren Appsammlungen</h4>
+      <ul>
+        <li> <a href="https://www.imedias.ch/appadvisor" target="_blank" rel="noopener"> Appadvisor </a> (Appsammlung von der Beratungsstelle imedias der FHNW) </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<%= link_to "alle", category_apps_path(key: "") %>
+<%= link_to "Hilfsmittel", category_apps_path(key: "Hilfsmittel") %>
+<%= link_to "Unterstützte Kommunikation", category_apps_path(key: "Unterstützte Kommunikation") %>
+<%= link_to "Natur, Mensch, Gesellschaft, Alltag", category_apps_path(key: "Natur, Mensch, Gesellschaft, Alltag") %>
+<%= link_to "eigener Lerninhalt", category_apps_path(key: "eigener Lerninhalt") %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Icon</th>
+        <th>Kategorie</th>
+        <th>Description</th>
+        <th>Link</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @apps.each do |app| %>
+        <tr>
+          <td><%= app.name %></td>
+          <td><%= image_tag app.picture_url, width: '100%' if app.picture.present? %></td>
+          <td><%= app.kategorie %></td>
+          <td><%= app.description %></td>
+          <td><%= app.link %></td>
+          <td><%= link_to 'Show', app %></td>
+          <td><%= link_to 'Edit', edit_app_path(app) %></td>
+          <td><%= link_to 'Destroy', app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<br>
+
+<%= link_to 'New App', new_app_path %>
